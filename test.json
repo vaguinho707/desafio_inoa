@@ -1,0 +1,33 @@
+{
+	"BizSts": {
+		"cd": "OK"
+	},
+	"Msg": {
+		"dtTm": "2024-08-12 22:11:44"
+	},
+	"Trad": [
+		{
+			"scty": {
+				"SctyQtn": {
+					"opngPric": 36.8,
+					"minPric": 36.8,
+					"maxPric": 37.81,
+					"avrgPric": 37.485,
+					"curPrc": 37.41,
+					"prcFlcn": 2.4650781
+				},
+				"mkt": {
+					"nm": "Vista"
+				},
+				"symb": "PETR4",
+				"desc": "PETROBRAS   PN      N2",
+				"indxCmpnInd": true
+			},
+			"ttlQty": 62208
+		}
+	]
+}
+
+Trad.scty.SctyQtn.curPrc
+Trad.scty.symb
+https://cotacao.b3.com.br/mds/api/v1/instrumentQuotation/PETR4
