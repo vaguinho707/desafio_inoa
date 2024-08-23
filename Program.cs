@@ -33,7 +33,8 @@ namespace HttpClientInoa
                 .Build();
 
             // Get configuration data 
-            var toEmail = config["AppSettings:Email"];
+            var toEmail = config["AppSettings:ToEmail"];
+            var toName = config["AppSettings:ToName"];
             var apiUrl = config["AppSettings:ApiUrl"];
             int getCurrentPriceMinutesInterval = Int32.Parse(config["AppSettings:GetCurrentPriceMinutesInterval"]);
             string emailApiKey = config["AppSettings:EmailApiKey"];
@@ -62,7 +63,7 @@ namespace HttpClientInoa
                     float currentPrice = GetCurrentPrice(ticker, apiUrl).GetAwaiter().GetResult();
                     if (currentPrice >= sellingPrice || currentPrice <= buyingPrice){
                         transactionType = currentPrice <= buyingPrice ? "buy" : "sell";
-                        SendEmail(ticker, currentPrice, transactionType, emailApiKey);
+                        SendEmail(ticker, currentPrice, transactionType, emailApiKey, toEmail, toName);
                     }
                     var secondsWaited = WaitGetInterval(getCurrentPriceMinutesInterval).GetAwaiter().GetResult();   
                     Console.WriteLine($"secondsWaited: {secondsWaited}");
@@ -108,7 +109,7 @@ namespace HttpClientInoa
 
         }
 
-        static void SendEmail(string ticker, float currentPrice, string transactionType, string emailApiKey)
+        static void SendEmail(string ticker, float currentPrice, string transactionType, string emailApiKey, string toEmail, string toName)
         {
             if(!Configuration.Default.ApiKey.ContainsKey("api-key"))
                 Configuration.Default.ApiKey.Add("api-key", emailApiKey);
@@ -117,9 +118,7 @@ namespace HttpClientInoa
             string SenderName = "Vagner Morais";
             string SenderEmail = "vagnermoraiss@hotmail.com";
             SendSmtpEmailSender Email = new SendSmtpEmailSender(SenderName, SenderEmail);
-            string ToEmail = "vagnerbrmorais@gmail.com";
-            string ToName = "Vagner";
-            SendSmtpEmailTo smtpEmailTo = new SendSmtpEmailTo(ToEmail, ToName);
+            SendSmtpEmailTo smtpEmailTo = new SendSmtpEmailTo(toEmail, toName);
             List<SendSmtpEmailTo> To = new List<SendSmtpEmailTo>();
             To.Add(smtpEmailTo);
             List<SendSmtpEmailBcc> Bcc = new List<SendSmtpEmailBcc>();
@@ -141,7 +140,7 @@ namespace HttpClientInoa
             Params.Add("subject", "Quotation News");
             List<string> Tags = new List<string>();
             Tags.Add("mytag");
-            SendSmtpEmailTo1 smtpEmailTo1 = new SendSmtpEmailTo1(ToEmail, ToName);
+            SendSmtpEmailTo1 smtpEmailTo1 = new SendSmtpEmailTo1(toEmail, toName);
             List<SendSmtpEmailTo1> To1 = new List<SendSmtpEmailTo1>();
             To1.Add(smtpEmailTo1);
             Dictionary<string, object> _params = new Dictionary<string, object>();
@@ -154,10 +153,14 @@ namespace HttpClientInoa
                 var sendSmtpEmail = new SendSmtpEmail(sender: Email, to: To, htmlContent: HtmlContent, subject: Subject, headers: Headers, templateId: TemplateId, _params: Params, messageVersions: messageVersiopns, tags: Tags);
                 CreateSmtpEmail result = apiInstance.SendTransacEmail(sendSmtpEmail);
                 Debug.WriteLine(result.ToJson());
+                Console.WriteLine("Email sent!");
+
             }
             catch (Exception e)
             {
                 Debug.WriteLine(e.Message);
+                Console.WriteLine("Email not sent!");
+
             }
         }
     }
