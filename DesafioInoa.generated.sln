@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioInoa", "DesafioInoa.csproj", "{938CDAB6-1ADB-4EF5-9270-A01B2BB35396}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioInoa", "DesafioInoa.csproj", "{09D5C242-4F17-483B-BF2B-CD9E0FE4F707}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{938CDAB6-1ADB-4EF5-9270-A01B2BB35396}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{938CDAB6-1ADB-4EF5-9270-A01B2BB35396}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{938CDAB6-1ADB-4EF5-9270-A01B2BB35396}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{938CDAB6-1ADB-4EF5-9270-A01B2BB35396}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09D5C242-4F17-483B-BF2B-CD9E0FE4F707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09D5C242-4F17-483B-BF2B-CD9E0FE4F707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09D5C242-4F17-483B-BF2B-CD9E0FE4F707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09D5C242-4F17-483B-BF2B-CD9E0FE4F707}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

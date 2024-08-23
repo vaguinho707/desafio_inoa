@@ -29,5 +29,4 @@
 }
 
 Trad.scty.SctyQtn.curPrc
-Trad.scty.symb
 https://cotacao.b3.com.br/mds/api/v1/instrumentQuotation/PETR4
